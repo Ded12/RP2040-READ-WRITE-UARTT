@@ -21,7 +21,7 @@ const uint LED_PIN2 = 13;
 volatile uint8_t rx_buffer[BUFFER_SIZE];
 volatile uint16_t rx_buffer_head = 0;
 volatile uint16_t rx_buffer_tail = 0;
-uint32_t received_data;
+uint8_t received_data;
 // Flag to indicate data received
 volatile bool data_received = false;
 
@@ -64,7 +64,7 @@ void uart_task(void *pvParameters)
             rx_buffer_tail = (rx_buffer_tail + 1) % BUFFER_SIZE;
 
             
-            printf("%d", received_data);
+            printf("%c", received_data);
             
         }
         vTaskDelay(pdMS_TO_TICKS(10));
